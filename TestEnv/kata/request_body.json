@@ -1,5 +1,18 @@
 {
-    "POST": {},
-    "PUT": {}
+    "POST": {
+    
+    "title": "Nuevo producto",
+    "price": 29.99,
+    "description": "Descripción del producto",
+    "category": "electronics",
+    "image": "https://www.freepik.es/fotos-vectores-gratis/test"},
+
+    "PUT": {     
+    
+    "title": "Producto actualizado",
+    "price": 39.99,
+    "description": "Descripción actualizada",
+    "category": "home",
+    "image": "https://www.freepik.es/fotos-vectores-gratis/update"}
 }
   

@@ -26,6 +26,18 @@ except Exception as e:
     print(f" Error al cargar request_body.json: {e}")
     body_data = {}
 
+# Verificar datos del POST
+post_data = body_data.get("POST")
+if not post_data:
+    print("⚠️ Advertencia: No se encontraron datos para POST en request_body.json")
+    post_data = {
+        "title": "Nuevo producto",
+        "price": 29.99,
+        "description": "Descripción del producto",
+        "category": "electronics",
+        "image": "https://www.freepik.es/fotos-vectores-gratis/test"
+    }
+
 # Configurar WebDriver con Selenium
 @pytest.fixture(scope="module")
 def driver():
@@ -39,7 +51,7 @@ def driver():
 # Lista de peticiones
 requests_data = [
     ("GET", API_BASE, None),
-    ("POST", API_BASE, body_data.get("POST", {})),
+    ("POST", API_BASE, post_data),
     ("PUT", f"{API_BASE}/1", body_data.get("PUT", {})),
     ("DELETE", f"{API_BASE}/1", None),
     ("GET", f"{API_BASE}/99999", None)  # Petición que fallará para validar errores
