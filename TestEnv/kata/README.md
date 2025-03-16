@@ -70,6 +70,6 @@ Al finalizar, se generarán los reportes en los archivos `reporte_api.json` y `r
 ## Comando ejecutar
 Se debe ejecutar el siguiente script para generar el consumo de la apis.
 
-python api.request.py
-pytest -s api_test.py
+-python api.request.py
+-pytest -s api_test.py
 
