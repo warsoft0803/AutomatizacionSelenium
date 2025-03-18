@@ -29,7 +29,7 @@ except Exception as e:
 # Verificar datos del POST
 post_data = body_data.get("POST")
 if not post_data:
-    print("⚠️ Advertencia: No se encontraron datos para POST en request_body.json")
+    print("Advertencia: No se encontraron datos para POST en request_body.json")
     post_data = {
         "title": "Nuevo producto",
         "price": 29.99,
@@ -68,13 +68,13 @@ def fetch_api_data(driver, method, url, data):
 
     response_body = driver.page_source[:500]  # Capturar parte del contenido
 
-    # Simulación de códigos de respuesta según el tipo de request
+    # Códigos de respuesta según el tipo de request
     status_code = 200 if method in ["GET", "PUT", "DELETE"] else 201 if method == "POST" else 404
-    if "error" in response_body.lower():  # Simular fallo si hay mensaje de error en la respuesta
+    if "error" in response_body.lower():  #fallo si hay mensaje de error en la respuesta de la apí
         status_code = 500
 
     success = status_code in [200, 201]
-    error_message = None if success else "❌ Error en la API"
+    error_message = None if success else "Error en la API"
 
     report = {
         "timestamp": timestamp,
@@ -87,7 +87,9 @@ def fetch_api_data(driver, method, url, data):
     }
 
     print(f"\n Respuesta de {method} {url}:")
-    print(json.dumps(report, indent=2, ensure_ascii=False))  # Imprimir en consola
+
+# Imprimir en consola
+    print(json.dumps(report, indent=2, ensure_ascii=False))  
 
     reports.append(report)
     return report
@@ -98,7 +100,7 @@ def test_fetch_api_data(driver, method, url, data):
     with ThreadPoolExecutor(max_workers=3) as executor:
         results = list(executor.map(lambda req: fetch_api_data(driver, req[0], req[1], req[2]), requests_data))
     
-    assert all(result["success"] for result in results if result["status_code"] in [200, 201]), "❌ Algunas pruebas fallaron"
+    assert all(result["success"] for result in results if result["status_code"] in [200, 201]), "Verificacion de la respuesta"
 
 # Guardar reporte en JSON y CSV
 @pytest.fixture(scope="session", autouse=True)

@@ -1,4 +1,4 @@
-Por favor leer la documentacion y el readme que se encuentra en TestEnv
+Por favor leer la documentacion de github gust
 
 ## 📄 Documentación Adicional
 Puedes ver la documentación completa en GitHub Gist:  
